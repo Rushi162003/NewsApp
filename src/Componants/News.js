@@ -34,7 +34,7 @@ const News = (props) => {
     useEffect(() => {
         document.title = `${capital(props.category)} - NewsMonkey`;
         updateNews();
-    }, []);
+    }, [props.category, updateNews]);
 
     const fetchMoreData = async () => {
         const newPage = page + 1;
