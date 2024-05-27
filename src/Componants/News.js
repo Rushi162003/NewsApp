@@ -13,7 +13,7 @@ const News = (props) => {
     const capital = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
-  
+
     const updateNews = async () => {
         props.setProgres(10);
         const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
@@ -31,10 +31,12 @@ const News = (props) => {
         props.setProgres(100);
     };
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         document.title = `${capital(props.category)} - NewsMonkey`;
         updateNews();
-    }, [props.category, updateNews]);
+    }, []);
+
 
     const fetchMoreData = async () => {
         const newPage = page + 1;
@@ -48,7 +50,7 @@ const News = (props) => {
 
     return (
         <>
-            <h1 className='text-center' style={{marginTop:'70px'}}>MonkeyNews - Top {capital(props.category)} Headlines</h1>
+            <h1 className='text-center' style={{ marginTop: '70px' }}>MonkeyNews - Top {capital(props.category)} Headlines</h1>
             {loading && <Spinner />}
             <InfiniteScroll
                 dataLength={articles.length}
