@@ -16,7 +16,8 @@ const News = (props) => {
 
     const updateNews = async () => {
         props.setProgres(10);
-        const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+        // const url = ` https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+        const url = ` https://www.googleapis.com/blogger/v3/blogs/2399953?key=AIzaSyAZLMijZWtRpEgEQNC0i0rlhYn7M3GqQUA`;
 
         setLoading(true);
 
@@ -42,7 +43,8 @@ const News = (props) => {
         const newPage = page + 1;
         setPage(newPage);
 
-        const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${newPage}&pageSize=${props.pageSize}`;
+        // const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${newPage}&pageSize=${props.pageSize}`;
+        const url = `https://www.googleapis.com/blogger/v3/blogs/2399953?key=AIzaSyAZLMijZWtRpEgEQNC0i0rlhYn7M3GqQUA`;
         // setPage(page+1) 
         const data = await fetch(url);
         const parsedData = await data.json();
